@@ -7,8 +7,7 @@ apis:
 
       equal-employment-opportunity-commission:equal-employment-opportunity-commission
     name: Equal Employment Opportunity Commission
-    tags:
-      - API
+    tags: []
     humanURL: https://www.eeoc.gov
     properties:
       - url: https://www.eeoc.gov
@@ -19,9 +18,9 @@ apis:
       and Alaska Natives. Learn More. 2024 EEO-3 and 2024 EEO-5 Data Collections Delayed.
 name: Equal Employment Opportunity Commission
 tags:
+  - Employment
   - Federal Government
   - Labor
-  - Employment
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party

@@ -1,9 +1,9 @@
 aid: equal-employment-opportunity-commission
-url: >-
+url: >2-
 
   https://raw.githubusercontent.com/api-evangelist/equal-employment-opportunity-commission/refs/heads/main/apis.yml
 apis:
-  - aid: >-
+  - aid: >2-
 
       equal-employment-opportunity-commission:equal-employment-opportunity-commission
     name: Equal Employment Opportunity Commission
@@ -13,12 +13,10 @@ apis:
     properties:
       - url: https://www.eeoc.gov
         type: Documentation
-    description: |-
-
-      The Equal Employment Opportunity Commission (EEOC) partners with Tribal
-      Employment Rights Offices (TEROs) to protect the employment rights of
-      Native Americans and Alaska Natives. Learn More. 2024 EEO-3 and 2024 EEO-5
-      Data Collections Delayed.
+    description: >-
+      The Equal Employment Opportunity Commission (EEOC) partners with Tribal Employment
+      Rights Offices (TEROs) to protect the employment rights of Native Americans
+      and Alaska Natives. Learn More. 2024 EEO-3 and 2024 EEO-5 Data Collections Delayed.
 name: Equal Employment Opportunity Commission
 tags:
   - Federal Government
@@ -30,14 +28,12 @@ access: 3rd-Party
 created: '2024-12-03'
 modified: '2026-03-16'
 position: Consumer
-description: >+
-  The U.S. Equal Employment Opportunity Commission (EEOC) is responsible for
-  enforcing federal laws that make it illegal to discriminate against a job
-  applicant or an employee because of the person's race, color, religion, sex
-  (including pregnancy, childbirth, or related conditions, gender identity, and
-  sexual orientation), national origin, age (40 or older), disability or genetic
-  information.
-
+description: >-
+  The U.S. Equal Employment Opportunity Commission (EEOC) is responsible for enforcing
+  federal laws that make it illegal to discriminate against a job applicant or an
+  employee because of the person's race, color, religion, sex (including pregnancy,
+  childbirth, or related conditions, gender identity, and sexual orientation), national
+  origin, age (40 or older), disability or genetic information.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

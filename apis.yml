@@ -27,6 +27,10 @@ position: Consumer
 access: 3rd-Party
 apis: []
 common:
+  - type: GitHubOrganization
+    url: https://github.com/EEOC
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/eeoc
   - type: Website
     url: https://www.eeoc.gov
   - type: Data Portal

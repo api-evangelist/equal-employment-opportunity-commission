@@ -1,0 +1,14 @@
+{
+  "repo": "equal-employment-opportunity-commission",
+  "feeds": [
+    {
+      "source": "https://www.eeoc.gov/rss.xml",
+      "feed_url": "https://www.eeoc.gov/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 20
+}

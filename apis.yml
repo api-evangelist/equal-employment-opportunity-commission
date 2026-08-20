@@ -24,6 +24,12 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/equal-employment-opportunity-commission.png
 tags:
+  - Federal-Government
+  - Labor
+  - Employment
+  - Civil Rights
+  - Open Data
+tags_raw:
   - Federal Government
   - Labor
   - Employment

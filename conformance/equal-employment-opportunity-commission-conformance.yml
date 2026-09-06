@@ -1,0 +1,73 @@
+generated: '2026-09-06'
+method: probed
+source: >-
+  Live fetch of https://www.eeoc.gov/data.json (the document's own conformsTo/@type
+  declaration) plus unauthenticated probes of every EEOC-controlled host, 2026-09-06.
+note: >-
+  EEOC publishes no API contract, so there is no OpenAPI, GraphQL or AsyncAPI document
+  to read conformance out of. The one standard EEOC genuinely declares, it declares
+  inside its own machine-readable document — the Project Open Data / DCAT-US public
+  data listing. Everything below marked conforms:false is recorded as measured absence,
+  never as a judgement of the agency's mission.
+conformance:
+  - id: dcat
+    name: DCAT-US / Project Open Data Metadata Schema v1.1
+    conforms: true
+    domain_standard: true
+    sector: government
+    evidence: >-
+      https://www.eeoc.gov/data.json (HTTP 200, application/json) declares
+      "conformsTo": "https://project-open-data.cio.gov/v1.1/schema",
+      "@type": "dcat:Catalog" and
+      "@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld"
+      in the document itself. 140 dcat:Dataset records, all accessLevel "public",
+      all licensed http://www.usa.gov/publicdomain/label/1.0/.
+    artifact: data-catalog/equal-employment-opportunity-commission-data-json.json
+    caveat: >-
+      Declared and structurally valid, but stale: the newest dataset `modified` value
+      in the catalog is 2019-08-19 while the EEO-1 public-use files linked from the
+      human pages run through 2023 (uploaded 2025-05).
+  - id: open-data-charter
+    name: US Federal Open Data Policy (OMB M-13-13) public data listing
+    conforms: true
+    evidence: >-
+      The agency serves the required /data.json enterprise data inventory with
+      bureauCode 350:00 and public-domain licensing on every record.
+    artifact: data-catalog/equal-employment-opportunity-commission-data-catalog.yml
+  - id: rfc9116
+    name: security.txt (RFC 9116)
+    conforms: false
+    evidence: >-
+      https://www.eeoc.gov/.well-known/security.txt returns HTTP 403, as does every
+      other path under /.well-known/ on both www.eeoc.gov and eeoc.gov — a blanket
+      server-side deny of the namespace rather than a missing file.
+  - id: rfc9727
+    name: /.well-known/api-catalog (RFC 9727)
+    conforms: false
+    evidence: https://www.eeoc.gov/.well-known/api-catalog returns HTTP 403.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: false
+    evidence: >-
+      No authorization-server metadata on any host
+      (/.well-known/oauth-authorization-server 403 on www.eeoc.gov, 404 on
+      publicportal.eeoc.gov). The EEOC Public Portal at publicportal.eeoc.gov uses a
+      first-party ASP.NET forms login (/Portal/Login.aspx) with no documented OAuth or
+      OIDC surface.
+  - id: oidc
+    name: OpenID Connect Discovery
+    conforms: false
+    evidence: /.well-known/openid-configuration — 403 on www.eeoc.gov, 404 on publicportal.eeoc.gov.
+  - id: openapi
+    name: OpenAPI
+    conforms: false
+    evidence: >-
+      No OpenAPI/Swagger document at any probed location on any EEOC-controlled host
+      (see well-known/equal-employment-opportunity-commission-well-known.yml,
+      contract_discovery.probes).
+  - id: ckan
+    name: CKAN data-portal API
+    conforms: false
+    evidence: >-
+      EEOC runs no CKAN instance of its own; its datasets are harvested into
+      catalog.data.gov, whose CKAN API is operated by GSA, not by EEOC.

@@ -1,0 +1,25 @@
+generated: '2026-09-06'
+method: probed
+source: >-
+  Documentation search across eeoc.gov plus live unauthenticated responses from
+  www.eeoc.gov, 2026-09-06.
+note: >-
+  EEOC documents no rate limits, and there is no API to rate-limit. No RateLimit-*,
+  X-RateLimit-* or Retry-After header appeared on any observed response from
+  www.eeoc.gov, including the /data.json fetch. An honest zero: undocumented AND
+  unsignalled, so a bulk consumer of the public-use files has no published guidance on
+  polite request rates beyond robots.txt.
+limit_count: 0
+limits: []
+headers_observed: []
+status_on_exhaustion: null
+robots_txt:
+  url: https://www.eeoc.gov/robots.txt
+  status: 200
+  crawl_delay: not stated
+evidence:
+  - url: https://www.eeoc.gov/data.json
+    status: 200
+    note: no rate-limit headers on the response
+  - url: https://www.eeoc.gov/robots.txt
+    status: 200

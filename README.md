@@ -81,11 +81,29 @@ The U.S. Equal Employment Opportunity Commission (EEOC) is responsible for enfor
 ## Timestamps
 
 - **Created:** 2024-12-03
-- **Modified:** 2026-04-28
+- **Modified:** 2026-09-06
 
 ## APIs
 
-No public APIs have been documented. EEOC currently publishes data via the EEOC Explore web tool and bulk data downloads rather than a programmatic REST API.
+No public APIs have been documented. Contract discovery on 2026-09-06 probed every
+EEOC-controlled host — `www.eeoc.gov`, `eeoc.gov`, `publicportal.eeoc.gov`,
+`egov.eeoc.gov`, `data.eeoc.gov`, `eeocdata.org` (and `api.eeoc.gov` /
+`publicdata.eeoc.gov`, which do not resolve) — and found no OpenAPI, GraphQL, MCP,
+A2A, SOAP/WSDL or gRPC surface. The `github.com/EEOC` organization has zero public
+repositories.
+
+EEOC does serve one first-party machine-readable document: the federally required
+Project Open Data v1.1 / DCAT-US public data listing at
+[https://www.eeoc.gov/data.json](https://www.eeoc.gov/data.json) — a 140-record
+`dcat:Catalog`, saved verbatim to `data-catalog/`. Every distribution in it is a file
+download (XLSX / CSV / ZIP) or an HTML landing page; none names an API endpoint, and
+its newest dataset `modified` date is 2019-08-19 while the EEO-1 public-use files
+linked from the human pages run through 2023.
+
+Also recorded: `/.well-known/` is blanket-denied on both `www.eeoc.gov` and `eeoc.gov`
+(HTTP 403 on every path, including ones that do not exist), so no security.txt,
+api-catalog or agent card can be served from the primary domain without a web-server
+configuration change.
 
 ## Common Properties
 

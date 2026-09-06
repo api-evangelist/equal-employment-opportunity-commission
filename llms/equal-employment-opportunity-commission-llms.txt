@@ -1,0 +1,84 @@
+# U.S. Equal Employment Opportunity Commission (EEOC)
+
+> The EEOC is the US federal agency that enforces the laws making it illegal to
+> discriminate against a job applicant or employee because of race, color, religion,
+> sex (including pregnancy, childbirth, gender identity and sexual orientation),
+> national origin, age (40 or older), disability or genetic information. It collects
+> the EEO-1, EEO-3, EEO-4 and EEO-5 workforce demographic reports and publishes
+> aggregate statistics from them.
+
+## What an agent can and cannot do here
+
+**There is no EEOC API.** As of 2026-09-06, probing every EEOC-controlled host found no
+OpenAPI or Swagger document, no GraphQL endpoint, no MCP server, no A2A agent card, no
+SOAP/WSDL surface and no gRPC service. `api.eeoc.gov` and `publicdata.eeoc.gov` do not
+resolve. The `github.com/EEOC` organization exists but has zero public repositories.
+
+**The one machine-readable document EEOC serves** is its federally mandated public data
+listing: `https://www.eeoc.gov/data.json` — a Project Open Data v1.1 / DCAT-US
+`dcat:Catalog` of 140 dataset records. Every distribution in it is a file download
+(XLSX, CSV, ZIP) or an HTML landing page; none is an API endpoint. Its newest dataset
+`modified` date is 2019-08-19, roughly six years behind the human pages, so an agent
+should treat it as a historical inventory, not a current index.
+
+**The interactive data tool ("EEOC Explore")** is a set of Tableau Public workbooks
+embedded in eeoc.gov pages (workbook `EEO1_17107864490220` on `public.tableau.com`).
+Tableau Public is a third-party host; EEOC publishes no query contract for it, and its
+data endpoints are protected by a bot challenge. Do not treat it as an EEOC API.
+
+**Bulk data** is the supported programmatic path: the EEO-1 public-use files are XLSX
+downloads linked from the statistics pages, currently running through the 2023 PUF.
+
+## Data
+
+- [Data and Analytics — overview](https://www.eeoc.gov/data)
+- [Data and Statistics](https://www.eeoc.gov/data/data-and-statistics)
+- [Data Tools and Products](https://www.eeoc.gov/data/data-tools-and-products)
+- [Data Governance](https://www.eeoc.gov/data/data-governance)
+- [EEO Data Collections](https://www.eeoc.gov/data/eeo-data-collections)
+- [EEO-1 (Employer Information Report) Statistics — hosts the EEOC Explore dashboards](https://www.eeoc.gov/data/eeo-1-employer-information-report-statistics)
+- [EEO-3 (Local Union Report) Statistics](https://www.eeoc.gov/data/eeo-3-local-union-report-statistics)
+- [EEO-4 (State and Local Government Information Report) Statistics](https://www.eeoc.gov/data/eeo-4-state-and-local-government-information-report-statistics)
+- [EEO-5 (Elementary-Secondary Staff Information Report) Statistics](https://www.eeoc.gov/data/eeo-5-elementary-secondary-staff-information-report-statistics)
+- [Enforcement and Litigation Statistics](https://www.eeoc.gov/data/enforcement-and-litigation-statistics-0)
+- [Public data listing (data.json, DCAT-US v1.1)](https://www.eeoc.gov/data.json)
+
+## Agency
+
+- [Home](https://www.eeoc.gov)
+- [Newsroom](https://www.eeoc.gov/newsroom)
+- [Newsroom RSS feed](https://www.eeoc.gov/rss.xml)
+- [Contact EEOC](https://www.eeoc.gov/contact-eeoc)
+- [EEOC Public Portal (charge filing — login required)](https://publicportal.eeoc.gov/)
+- [Freedom of Information Act](https://www.eeoc.gov/foia)
+- [Open Government Plan](https://www.eeoc.gov/us-equal-employment-opportunity-commission-eeoc-open-government-plan)
+- [Privacy Policy](https://www.eeoc.gov/privacy-policy-us-equal-employment-opportunity-commission-web-site-and-mobile-app)
+- [Disclaimer](https://www.eeoc.gov/disclaimer)
+
+## Licensing
+
+Every dataset in the EEOC public data listing is `accessLevel: public` and dedicated to
+the public domain under <http://www.usa.gov/publicdomain/label/1.0/>. There is no
+pricing, no plan, no key and no quota.
+
+## Notes for machine consumers
+
+- `/.well-known/` is blanket-denied: every path under it returns HTTP 403 on both
+  `www.eeoc.gov` and `eeoc.gov`, including paths that do not exist. No security.txt,
+  no api-catalog, no agent card can currently be served from the primary domain.
+- `eeocdata.org` and `data.eeoc.gov` both 301 to
+  `https://www.eeoc.gov/data/eeo-data-collections`; they answer HTTP 200 with an HTML
+  shell for arbitrary paths, so a 200 from either is not evidence of a document.
+- No rate limits are published, and no `RateLimit-*` or `Retry-After` header was
+  observed on any response. Be conservative when bulk-downloading.
+- The EEOC Open Government Plan commits to describing how data assets are made
+  "available for download and/or use through an application programming interface
+  (API)". No such API has shipped.
+
+---
+generated: 2026-09-06
+method: generated
+source: >-
+  Written by API Evangelist from this repository's apis.yml plus live probes of
+  eeoc.gov on 2026-09-06. THIS IS NOT AN EEOC-AUTHORED DOCUMENT. EEOC serves no
+  llms.txt of its own — https://www.eeoc.gov/llms.txt returned HTTP 404.

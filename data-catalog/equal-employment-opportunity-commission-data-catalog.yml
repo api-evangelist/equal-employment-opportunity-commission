@@ -1,0 +1,80 @@
+# EEOC Project Open Data / DCAT-US data catalog — the only first-party
+# machine-readable document this pipeline could find on any EEOC-controlled host.
+generated: '2026-09-06'
+method: probed
+source: https://www.eeoc.gov/data.json
+name: EEOC Public Data Listing (data.json)
+description: >-
+  The U.S. Equal Employment Opportunity Commission publishes a Project Open Data
+  v1.1 / DCAT-US "public data listing" at https://www.eeoc.gov/data.json, as required
+  of federal agencies by OMB M-13-13. It is a dcat:Catalog of 140 dataset records
+  covering the EEO-1, EEO-3, EEO-4 and EEO-5 workforce demographic collections. It is
+  a DATA catalog, not an API catalog — every distribution is a file download
+  (XLSX / CSV / ZIP) or an HTML landing page, and no entry names an API endpoint.
+discovery:
+  requested_url: https://www.eeoc.gov/data.json
+  resolved_url: https://www.eeoc.gov/sites/default/files/migrated_files/data.json
+  redirect: HTTP 301 from /data.json to /sites/default/files/migrated_files/data.json (Drupal 11 redirect, body carries a courtesy meta-refresh)
+  http_status: 200
+  content_type: application/json
+  bytes: 231299
+  fetched: '2026-09-06'
+  saved_as: data-catalog/equal-employment-opportunity-commission-data-json.json
+standard:
+  name: Project Open Data Metadata Schema v1.1 (DCAT-US)
+  conforms_to: https://project-open-data.cio.gov/v1.1/schema
+  described_by: https://project-open-data.cio.gov/v1.1/schema/catalog.json
+  context: https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld
+  declared_in_document: true
+  evidence: >-
+    The fetched document's own top-level "conformsTo" key reads
+    "https://project-open-data.cio.gov/v1.1/schema" and "@type" reads "dcat:Catalog".
+catalog:
+  dataset_count: 140
+  distribution_count: 140
+  access_level:
+    public: 140
+  license: http://www.usa.gov/publicdomain/label/1.0/
+  bureau_code: '350:00'
+  program_code: '000:000'
+  publisher: US Equal Employment Opportunity Commision
+  contact_point:
+    fn: Daniel McGregor
+    email: daniel.mcgregor@eeoc.gov
+  accrual_periodicity:
+    R/P1Y: 129
+    R/P2Y: 10
+    unstated: 1
+  distribution_media_types:
+    text/html: 66
+    application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: 42
+    text/csv: 21
+    application/zip: 11
+  collections:
+    EEO-1 (private employer): 119
+    EEO-4 (state and local government): 16
+    EEO-5 (elementary-secondary public schools): 3
+    EEO-3 (local union report): 1
+    other: 1
+  distribution_hosts:
+    www.eeoc.gov: 140
+findings:
+  - id: no-api-distribution
+    finding: >-
+      Not one of the 140 datasets carries an API distribution. Every distribution is a
+      downloadURL to a spreadsheet, CSV or ZIP on www.eeoc.gov, or an HTML landing page.
+      Programmatic consumers must scrape or bulk-download files.
+  - id: catalog-is-stale
+    finding: >-
+      The newest dataset `modified` date in the catalog is 2019-08-19; the distribution
+      is a 2013-2019 cohort. Meanwhile the EEO-1 statistics page on the same site links
+      public-use files through EEO1_2023_PUF.xlsx (uploaded 2025-05). The federally
+      mandated machine-readable listing has drifted roughly six years behind the human
+      pages it is supposed to describe.
+  - id: api-commitment-unshipped
+    finding: >-
+      The EEOC Open Government Plan commits to describing "ways in which EEOC is making
+      public data assets available for download and/or use through an application
+      programming interface (API)". No such API exists on any EEOC-controlled host as of
+      this probe.
+    evidence: https://www.eeoc.gov/us-equal-employment-opportunity-commission-eeoc-open-government-plan

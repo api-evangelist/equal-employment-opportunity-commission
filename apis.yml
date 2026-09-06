@@ -8,8 +8,11 @@ description: >-
   gender identity, and sexual orientation), national origin, age (40 or
   older), disability or genetic information. EEOC publishes EEO-1, EEO-3,
   EEO-4, and EEO-5 workforce demographic data through the EEOC Explore
-  data querying tool and downloadable bulk data files, but does not
-  currently publish a public REST API for programmatic data access.
+  Tableau dashboards and downloadable bulk data files, and serves the
+  federally required Project Open Data / DCAT-US public data listing at
+  https://www.eeoc.gov/data.json — a 140-record dcat:Catalog in which every
+  distribution is a file download rather than an API endpoint. It publishes
+  no OpenAPI, GraphQL, MCP or event surface of any kind.
 type: Index
 deliveryModel:
   model: unknown
@@ -49,7 +52,7 @@ tags_raw:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/equal-employment-opportunity-commission/refs/heads/main/apis.yml
 created: '2024-12-03'
-modified: '2026-04-28'
+modified: '2026-09-06'
 specificationVersion: '0.23'
 position: Consuming
 access: 3rd-Party
@@ -63,16 +66,52 @@ common:
     url: https://www.linkedin.com/company/eeoc
   - type: Website
     url: https://www.eeoc.gov
-  - type: Data Portal
+  - type: X-DataPortal
     url: https://www.eeoc.gov/data
-  - type: EEOC Explore
-    url: https://www.eeoc.gov/data/eeoc-explore
-  - type: EEO-1 Data Collection
-    url: https://www.eeoc.gov/data/eeo-1-data-collection
+  - type: X-EEOCExplore
+    url: https://www.eeoc.gov/data/eeo-1-employer-information-report-statistics
+  - type: X-EEO1DataCollection
+    url: https://www.eeoc.gov/data/eeo-data-collections
   - type: Contact
     url: https://www.eeoc.gov/contact-eeoc
   - url: https://www.eeoc.gov/rss.xml
     type: Blog
+  - type: X-DCAT
+    url: data-catalog/equal-employment-opportunity-commission-data-json.json
+  - type: X-DataCatalog
+    url: data-catalog/equal-employment-opportunity-commission-data-catalog.yml
+  - type: Conformance
+    url: conformance/equal-employment-opportunity-commission-conformance.yml
+  - type: LLMsTxt
+    url: llms/equal-employment-opportunity-commission-llms.txt
+  - type: Plans
+    url: plans/equal-employment-opportunity-commission-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/equal-employment-opportunity-commission-rate-limits.yml
+  - type: X-DataToolsAndProducts
+    url: https://www.eeoc.gov/data/data-tools-and-products
+  - type: X-DataGovernance
+    url: https://www.eeoc.gov/data/data-governance
+  - type: X-DataAndStatistics
+    url: https://www.eeoc.gov/data/data-and-statistics
+  - type: Newsroom
+    url: https://www.eeoc.gov/newsroom
+  - type: PrivacyPolicy
+    url: https://www.eeoc.gov/privacy-policy-us-equal-employment-opportunity-commission-web-site-and-mobile-app
+  - type: X-Disclaimer
+    url: https://www.eeoc.gov/disclaimer
+  - type: X-PublicPortal
+    url: https://publicportal.eeoc.gov/
+  - type: YouTube
+    url: https://www.youtube.com/user/TheEEOC
+  - type: X
+    url: https://x.com/useeoc
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+
+x-enrichment:
+  date: '2026-09-06'
+  status: enriched
+  artifacts_added: 7
+  pass: local-v3

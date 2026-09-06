@@ -1,0 +1,25 @@
+generated: '2026-09-06'
+method: searched
+source: https://www.eeoc.gov/data
+note: >-
+  EEOC is a US federal agency and publishes no access plans, tiers or pricing of any
+  kind. Its data products are free and, per every record in its own data.json listing,
+  released under the US Government Public Domain dedication
+  (http://www.usa.gov/publicdomain/label/1.0/). There is no signup, no key, no quota and
+  no metering, because there is no programmatic API to meter — the surface is web pages,
+  embedded Tableau Public dashboards and downloadable XLSX/CSV/ZIP files.
+plan_count: 0
+plans: []
+access:
+  cost: free
+  license: http://www.usa.gov/publicdomain/label/1.0/
+  authentication_required: false
+  signup_required: false
+  distribution: file download and web UI only
+evidence:
+  - url: https://www.eeoc.gov/data
+    status: 200
+  - url: https://www.eeoc.gov/data/eeo-1-employer-information-report-statistics
+    status: 200
+  - url: https://www.eeoc.gov/data.json
+    status: 200

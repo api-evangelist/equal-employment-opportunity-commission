@@ -1,0 +1,125 @@
+# /.well-known/ probe record for every host this record knows.
+# NO DOCUMENT WAS SERVED. No WellKnown / SecurityTxt / APICatalog pointer is emitted:
+# this file records an absence, and an absence must not be wired as a presence.
+generated: '2026-09-06'
+method: probed
+source: live unauthenticated HTTP probes with a browser User-Agent, 2026-09-06
+note: >-
+  www.eeoc.gov and eeoc.gov return HTTP 403 for the ENTIRE /.well-known/ namespace —
+  including paths that do not exist (/.well-known/zzz-does-not-exist also 403s, and
+  /.well-known/ itself 403s). This is a blanket server-side deny, not a missing file,
+  so EEOC currently cannot serve an RFC 9116 security.txt, an RFC 9727 api-catalog or
+  an A2A agent card from its primary domain without a web-server configuration change.
+  That is a one-line fix on the provider's side and would unlock several discovery
+  surfaces at once.
+hosts:
+  - host: www.eeoc.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 403
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+        file: null
+      - path: /.well-known/api-catalog
+        status: 403
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 403
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 403
+        file: null
+      - path: /.well-known/agent.json
+        status: 403
+        file: null
+  - host: eeoc.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        file: null
+  - host: publicportal.eeoc.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+  - host: egov.eeoc.gov
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+
+# Contract-discovery probes (STEP 0b) recorded here because the repo has no
+# openapi/, graphql/, mcp/ or a2a/ artifact to hang them on. All negative.
+contract_discovery:
+  hosts_probed:
+    - www.eeoc.gov
+    - eeoc.gov
+    - publicportal.eeoc.gov (redirects to /Portal/Login.aspx — gated)
+    - egov.eeoc.gov (resolves, nginx 404 on every path)
+    - data.eeoc.gov (301 to www.eeoc.gov/data/eeo-data-collections)
+    - eeocdata.org (301 to www.eeoc.gov/data/eeo-data-collections)
+    - api.eeoc.gov (does not resolve — NXDOMAIN)
+    - publicdata.eeoc.gov (does not resolve — NXDOMAIN)
+  probes:
+    - url: https://www.eeoc.gov/openapi.json
+      status: 404
+    - url: https://www.eeoc.gov/openapi.yaml
+      status: 404
+    - url: https://www.eeoc.gov/swagger.json
+      status: 404
+    - url: https://www.eeoc.gov/api-docs
+      status: 404
+    - url: https://www.eeoc.gov/api
+      status: 404
+    - url: https://www.eeoc.gov/developer
+      status: 404
+    - url: https://www.eeoc.gov/open
+      status: 404
+    - url: https://www.eeoc.gov/data/api
+      status: 404
+    - url: https://www.eeoc.gov/llms.txt
+      status: 404
+    - url: https://www.eeoc.gov/data.json
+      status: 200
+      result: >-
+        HIT — but a DCAT-US data catalog, not an API contract. Saved to
+        data-catalog/. No distribution in it names an API endpoint.
+    - url: https://www.eeoc.gov/sitemap.xml
+      status: 200
+      result: sitemap index only
+    - url: https://egov.eeoc.gov/eeoc/statistics/enforcement/charges.cfm
+      status: 404
+      result: the legacy ColdFusion statistics host is retired; nginx answers 404 on every path
+  soft_404_warning: >-
+    eeocdata.org, data.eeoc.gov and publicportal.eeoc.gov answer HTTP 200 with an HTML
+    shell for /openapi.json, /swagger.json, /api-docs and /llms.txt. Those are catch-all
+    responses, NOT documents — eeocdata.org and data.eeoc.gov both redirect every path to
+    www.eeoc.gov/data/eeo-data-collections, and publicportal.eeoc.gov returns its ASP.NET
+    login page. None of them was credited.
+  graphql: not probed — no /graphql surface is named anywhere in EEOC documentation
+  mcp: none found; no EEOC-published MCP server exists on npm, PyPI or any EEOC host
+  a2a: no agent card served (see hosts[] above); nothing written to a2a/ per pipeline rule
+  soap_wsdl: none found; no ?wsdl or ?singleWsdl surface named in any EEOC documentation
+  grpc: none found; the github.com/EEOC organization has 0 public repositories

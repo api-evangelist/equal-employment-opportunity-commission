@@ -38,7 +38,7 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/equal-employment-opportunity-commission.png
 tags:
-  - Federal-Government
+  - Federal Government
   - Labor
   - Employment
   - Civil Rights
@@ -49,6 +49,7 @@ tags_raw:
   - Employment
   - Civil Rights
   - Open Data
+  - Federal-Government
 url: >-
   https://raw.githubusercontent.com/api-evangelist/equal-employment-opportunity-commission/refs/heads/main/apis.yml
 created: '2024-12-03'
